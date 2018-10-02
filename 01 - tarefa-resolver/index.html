@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tarefas</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+  <div id="container">
+    <form id="input">
+      <input type="text" placeholder="Adicione uma nova tarefa" />
+    </form>
+    <ul id="list">
+    </ul>
+  </div>
+  <script type="text/javascript">
+    var adicionarLinha = document.querySelector("#input");
+    adicionarLinha.addEventListener("submit", function (event) {
+      event.preventDefault(); //ele trava o browser
+      
+      var form = document.getElementById("input"); //chama
+      var list = document.getElementById("list");
+
+      var criaLinhaLi = document.createElement("li"); //cria a li
+
+      criaLinhaLi.textContent = document.querySelector("input").value; //agora vc tá chamando o input e o value vai dar o que a pessoa coloca lá no form
+      list.appendChild(criaLinhaLi); //append imprime e dps cria linha
+
+      document.querySelector("input").value=""; //limpa o campo dps q vc dá ok/enter
+
+      criaLinhaLi.addEventListener("click", function (event){ //eu pego o que cria o li, o addevent é o que vai acontecer a partir do click, q tem uma função
+        event.preventDefault(); //aqui ele trava de novo o browser pra nao atualizar
+
+        // event.target.classList.add("done"); //classlist é uma funcao do html pra adc class. o target é o alvo do seu click. importante colocar o add também // comentei pra fazer o jeito da bia abaixo, mas tá certinho sim
+
+        // criaLinhaLi.addEventListener("click", function(event) {
+        if (this.classList.contains("done")) { //jeito da bia a seguir 
+        // Caso ja esteja, marca como "nao feito"
+        this.classList.remove("done")
+        } else {
+        // Caso nao esteja marca como "feito"
+        this.classList.add("done")
+        }
+      }
+      );
+    // })
+    });
+  </script>
+</body>
+</html>
