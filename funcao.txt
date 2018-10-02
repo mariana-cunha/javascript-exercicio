@@ -1,0 +1,7 @@
+function createElementAndAddClass ("elemento", "class") { 
+var el = document.createelement (elemento)
+if(typeof classe !="undefined"){
+el.classlist.add(classe)
+}
+return el
+}
